@@ -1,0 +1,27 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: #C8C6C5;
+	font-family: "Oswald";
+}
+
+.visitantes{
+	background: #C73138;
+	width: 200px;
+	padding: 30px;
+	margin: 30px auto;
+	border-radius: 5px;
+	text-align: center;
+	color: white;
+}
+h1{
+	font-weight: normal;
+	margin:30px auto;
+	text-align: center;
+}
+.numeros{
+	font-size: 50px;
+}

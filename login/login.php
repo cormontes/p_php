@@ -23,8 +23,6 @@
 
 		$resultado = $statement->fetch();
 
-		print_r($resultado);
-
 		if($resultado !== false){
 			$_SESSION['usuario'] = $usuario;
 			header('Location: index.php');
