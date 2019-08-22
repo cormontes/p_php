@@ -23,6 +23,11 @@
 
 		<label for="titulo">Titulo de Foto</label>
 		<input type="text" id="titulo" name="titulo">
+
+		<label for="texto">Descripcion: </label>
+		<textarea name="texto" id="texto" placeholder="Ingrese una descripcion"></textarea>
+
+		<input type="submit" class="submit" value="Subir Foto">
 		</form>
 
 		<a href="index.php" class="regresar"><i class="fa fa-long-arrow-left"></i>regresar</a>
