@@ -47,6 +47,7 @@
 			$mensaje_preparado.="Mensaje:". $mensaje;
 
 			mail($enviar_a,$asunto,$mensaje_preparado);
+			
 			$enviado=true;
 		}
 	}

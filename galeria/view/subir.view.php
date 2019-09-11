@@ -26,6 +26,7 @@
 
 		<label for="texto">Descripcion: </label>
 		<textarea name="texto" id="texto" placeholder="Ingrese una descripcion"></textarea>
+		
 
 		<input type="submit" class="submit" value="Subir Foto">
 		</form>
