@@ -11,13 +11,15 @@
 <body>
 	<header>
 		<div class="contenedor">
-			<h1 class="titulo">Image</h1>
+			<h1 class="titulo">
+				Foto: <?php echo $foto['titulo']; ?>
+			</h1>
 		</div>
 	</header>
 
 	<div class="contenedor">
 		<div class="foto">
-			<img src="imagenes/1.jpg" alt="">
+			<img src="imagenes/" alt="">
 			<p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium vero atque quis omnis facilis, id debitis modi in asperiores eaque provident dicta, dignissimos praesentium quasi inventore? Cupiditate vero, soluta architecto!</p>
 			<a href="index.php" class="regresar"><i class="fa fa-long-arrow-left"></i>regresar</a>
 		</div>

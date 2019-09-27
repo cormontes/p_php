@@ -30,8 +30,5 @@
 
 	$total_paginas = ceil($total_post/$fotos_por_pagina);
 
-
-	print_r($fotos);
-	echo $total_paginas;
 	require 'view/index.view.php';
 ?>
