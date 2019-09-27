@@ -23,7 +23,7 @@
 
 	<div class="contenedor">
 		<div class="foto">
-			<img src="fotos/ <?php echo $foto['foto']; ?>" alt="">
+			<img src="fotos/<?php echo $foto['foto'];?>" alt="">
 			<p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium vero atque quis omnis facilis, id debitis modi in asperiores eaque provident dicta, dignissimos praesentium quasi inventore? Cupiditate vero, soluta architecto!</p>
 			<a href="index.php" class="regresar"><i class="fa fa-long-arrow-left"></i>regresar</a>
 		</div>
