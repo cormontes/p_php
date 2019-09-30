@@ -11,6 +11,7 @@
 <body>
 	<header>
 		<div class="contenedor">
+			<!---  Si no el titulo esta vacio le colocara el nombre de la imagen   ---->
 			<h1 class="titulo">
 				foto:<?php if(!empty($foto['titulo'])){ ?>
 						<?php echo $foto['titulo']; ?>
