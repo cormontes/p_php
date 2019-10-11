@@ -5,14 +5,12 @@
 	<div class="contenedor">
 		<div class="post">
 			<article>
-				<h2 class="titulo">Titulo del articulo</h2>
-				<p class="fecha">1 de enero del 2019</p>
+				<h2 class="titulo"><?php echo $post['titulo']; ?></h2>
+				<p class="fecha"><?php echo fecha($post['fecha']); ?></p>
 				<div class="thumb">
-					<a href="#">
-						<img src="<?php echo RUTA;?>/imagenes/1.png" alt="">
-					</a>
+						<img src="<?php echo RUTA;?>/imagenes/<?php echo $post['thumb']; ?>" alt="">
 				</div>
-				<p class="extracto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias perspiciatis vitae quidem quia vel totam cupiditate possimus ullam doloribus illum voluptate tempora soluta excepturi impedit, hic eos iste aperiam nam!</p>
+				<p class="extracto"><?php echo $post['extracto']; ?></p>
 			</article>
 		</div>
 	</div>
