@@ -22,12 +22,20 @@ function  pagina_actual(){
 }
 
 function obtener_post($post_por_pagina, $conexion){
-	$inicio = (pagina_actual() > 0) ? pagina_actual() * $post_por_pagina - $post_por_pagina : 0;
+	$inicio = (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina : 0;
 	$sentencia = $conexion->prepare("select  SQL_CALC_FOUND_ROWS * from articulos limit $inicio, $post_por_pagina");
 	$sentencia->execute();
 	return $sentencia->fetchAll();
 }
 
+function numero_paginas($post_por_pagina, $conexion){
+	$total_post = $conexion->prepare('SELECT FOUND_ROWS as total');
+	$total_post->execute();
+	$total_post = $total_post->fetch()['total'];
+
+	$numero_paginas = ceil($total_post / $post_por_pagina);
+	return $numero_paginas;
+}
 // Para el Single.php
 
 function id_articulo($id){
@@ -42,10 +50,12 @@ function  obtener_post_por_id($conexion, $id){
 	return ($resultado) ? $resultado : false;
 }
 
+
 // Extraer partes de la fecha y convertirlo a caracter
 function fecha($fecha){
 	$timestamp = strtotime($fecha);
 	$meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+	//Extrae dia de la variable $timestamp
 	$dia = date('d', $timestamp);
 	$mes = date('m', $timestamp) - 1;
 	$year = date('Y', $timestamp);

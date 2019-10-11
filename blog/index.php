@@ -14,5 +14,7 @@
 		header('Location: error.php');
 	}
 	
+
+	
 	require 'views/index.view.php';
 ?>
