@@ -10,7 +10,8 @@
 				<div class="thumb">
 						<img src="<?php echo RUTA;?>/imagenes/<?php echo $post['thumb']; ?>" alt="">
 				</div>
-				<p class="extracto"><?php echo $post['extracto']; ?></p>
+				<!-- nl2br para obtener espaciados en el parrafo -->
+				<p class="extracto"><?php echo nl2br($post['extracto']); ?></p>
 			</article>
 		</div>
 	</div>
