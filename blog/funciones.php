@@ -64,4 +64,10 @@ function fecha($fecha){
 	return $fecha; 
 }
 
+function ComprobarSession() {
+	if (!isset($_SESSION['admin'])){
+		header('Location: ' .  RUTA);
+	}
+}
+
 ?>
