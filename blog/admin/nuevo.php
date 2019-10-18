@@ -2,6 +2,7 @@
 	require 'config.php';
 	require '../funciones.php';
 	
+	// Comprueba si esta iniciada una Sesion si no regresa ala pagina de inicio
 	ComprobarSession();
 
 	$conexion = conexion($bd_config);
@@ -34,7 +35,6 @@
 
 		header('Location: ' . RUTA . '/admin');
 	}
-
 
 
 	require '../views/nuevo.view.php';

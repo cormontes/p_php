@@ -19,5 +19,5 @@
 		header('Location: ../error.php');
 	}
 
-	require '../admin.index.view.php';
+	require '../views/admin.index.view.php';
 ?>
