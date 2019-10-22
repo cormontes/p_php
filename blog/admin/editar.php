@@ -11,6 +11,36 @@
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
+		$titulo = LimpiarDatos($_POST['titulo']);
+		$extracto = LimpiarDatos($_POST['extracto']);
+		$texto = $_POST['texto'];
+		$id = id_articulo($_POST['id']);
+		$thumb_guardada = $_POST['thumb-guardada'];
+		$thumb = $_FILES['thumb'];
+
+		if(empty($thumb['name'])){
+			$thumb = $thumb_guardada;
+		}else{
+			$archivo_subido = '../' . $blog_config['carpeta_imagenes'] . $_FILES['thumb']['name'];
+			move_uploaded_file($_FILES['thumb']['tmp_name'], $archivo_subido);
+			$thumb = $_FILES['thumb']['name'];
+		}
+
+		$statement = $conexion->prepare(
+			'UPDATE articulos set titulo = :titulo, extracto = :extracto, texto = :texto,
+			thumb = :thumb where id = :id'
+		);
+
+		$statement->execute(array(
+			':titulo' => $titulo,
+			':extracto' => $extracto,
+			':texto' => $texto,
+			':thumb' => $thumb,
+			':id' => $id
+		));
+
+		header('Location: ' . RUTA . '/admin');
+
 	}else {
 		$id_articulo = id_articulo($_GET['id']);
 
@@ -22,7 +52,9 @@
 		if(!$post){
 			header('Location: ' . RUTA . '/admin');
 		}
+		
 		$post = $post[0];
+
 	}
 
 	require '../views/editar.view.php';
