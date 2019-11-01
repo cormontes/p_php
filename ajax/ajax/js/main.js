@@ -5,8 +5,11 @@ var loader = document.getElementById('loader');
 btn.addEventListener('click', function(){
 	//Peticion Ajax 
 	var peticion =  new XMLHttpRequest();
-
-	peticion.open('GET', 'http://www.json-generator.com/api/json/get/bVrrKcldwy?indent=2');
+	//Obtener datos de una API
+	//peticion.open('GET', 'http://www.json-generator.com/api/json/get/bVrrKcldwy?indent=2');
+	
+	//Obtener datos de un archivo PHP que contiene datos JSON
+	peticion.open('GET', 'php/usuarios.php');
 
 	loader.classList.add('active');
 
@@ -16,7 +19,8 @@ btn.addEventListener('click', function(){
 		
 		var datos = JSON.parse(peticion.responseText);
 
-		// Utilizadon el forAEach recorre el objeto y lo muestra e la table
+		// Utilizadon el ciclo forAEach recorre el objeto y lo muestra e la table
+		/*
 		datos.forEach(personas => {
 			//Se crea una nueva linea en la tabla
 			var elemento = document.createElement("tr");
@@ -28,6 +32,19 @@ btn.addEventListener('click', function(){
 			//Se agregan los elementos ala tabla
 			document.getElementById('tabla').appendChild(elemento);
 		});
+		*/
+	
+		// Utilizando el ciclo FOR
+		for(var i = 0; i < datos.length; i++){
+			var elemento = document.createElement("tr");
+			elemento.innerHTML += ("<td>" + datos[i].id + "</td>");
+			elemento.innerHTML += ("<td>" + datos[i].nombre + "</td>");
+			elemento.innerHTML += ("<td>" + datos[i].edad + "</td>");
+			elemento.innerHTML += ("<td>" + datos[i].pais + "</td>");
+			elemento.innerHTML += ("<td>" + datos[i].correo + "</td>");
+			//Se agregan los elementos ala tabla
+			document.getElementById('tabla').appendChild(elemento);
+		}
 
 	}
 
