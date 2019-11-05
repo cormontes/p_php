@@ -1,8 +1,36 @@
 <?php
 
+error_reporting(0);
+
+header('Content-type: application/json; charset = utf-8');
+
+
 $conexion = new mysqli('localhost', 'root', '', 'curso_php_ajax');
 
 if($conexion->connect_errno){
-	$conexion = false;
-   
+	$respuesta = [
+		$error => true
+	];
+}else{
+	$conexion->set_charset("utf8");
+	$statemet = $conexion->prepare("SELECT * FROM usuarios");
+	$statemet->execute();
+
+	$resultados = $statemet->get_result();
+
+	$respuesta = [];
+
+	while($fila = $resultados->fetch_assoc()){
+		$usuario = [
+			'id' => $fila['ID'],
+			'nombre' => $fila['nombre'],
+			'edad' => $fila['edad'],
+			'pais' => $fila['pais'],
+			'correo' => $fila['correo'],
+		];
+
+		array_push($respuesta, $usuario);
+	}
 }
+
+echo json_encode($respuesta);
