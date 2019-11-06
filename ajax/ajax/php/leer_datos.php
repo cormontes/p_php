@@ -9,7 +9,7 @@ $conexion = new mysqli('localhost', 'root', '', 'curso_php_ajax');
 
 if($conexion->connect_errno){
 	$respuesta = [
-		$error => true
+		error => true
 	];
 }else{
 	$conexion->set_charset("utf8");
