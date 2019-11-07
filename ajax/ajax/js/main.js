@@ -12,7 +12,7 @@ var usuario_nombre,
 
 
 function cargarUsuarios(){
-	tabla.innerHTML = '<tr><th>ID</td><th>Nombre</td><th>Edad</td><th>Pais</td><th>Correo</td></tr>';
+	tabla.innerHTML = '<tr><th>ID</th><th>Nombre</th><th>Edad</th><th>Pais</th><th>Correo</th></tr>';
 
 	var peticion = new XMLHttpRequest();
 	peticion.open('GET', 'php/leer_datos.php');
@@ -21,9 +21,20 @@ function cargarUsuarios(){
 
 	peticion.onload =  function(){
 		var datos = JSON.parse(peticion.responseText);
-		
+
+
 		 if(datos.error){
 		 	error_box.classList.add('active');
+		 }else{
+		 	for(var i = 0;i < datos.length;i++){
+		 		var elemento = document.createElement('tr');
+		 		elemento.innerHTML += ('<td>' + datos[i].id +'</td>');
+		 		elemento.innerHTML += ('<td>' + datos[i].nombre +'</td>');
+		 		elemento.innerHTML += ('<td>' + datos[i].edad +'</td>');
+		 		elemento.innerHTML += ('<td>' + datos[i].pais +'</td>');
+		 		elemento.innerHTML += ('<td>' + datos[i].correo +'</td>');
+		 		tabla.appendChild(elemento);
+		 	}
 		 }
 	}
 
