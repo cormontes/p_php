@@ -56,19 +56,23 @@ function cargarUsuarios(){
 	peticion.send();
 }
 // para insertar datos en formulario
+// la letra 'e' es de evento
 function agregarUsuarios(e){
 	e.preventDefault();
 
 	var peticion = new XMLHttpRequest();
 	peticion.open('POST', 'php/insertar.php');
 
+	// Validar variables y quitar los espacios//
 	usuario_nombre = formulario.nombre.value.trim();
 	// Convertir el valor a entero
 	usuario_edad = parseInt(formulario.edad.value.trim());
 	usuario_pais = formulario.pais.value.trim();
 	usuario_correo = formulario.correo.value.trim();
 
+	// si formulario-valido es true envia los datos via ajax a archivo php
 	if(formulario_valido()){
+
 		error_box.classList.remove('active');
 
 		var parametros = 'nombre=' + usuario_nombre + '&edad=' + usuario_edad + '&pais=' + usuario_pais + '&correo=' + usuario_correo;
@@ -76,20 +80,39 @@ function agregarUsuarios(e){
 
 		loader.classList.add('active');
 
+		peticion.onload = function(){
+			//carga el contenido de la base de datos
+			cargarUsuarios();
+			// Borra contenido de los text
+			formulario.nombre.value = '';
+			formulario.edad.value = '';
+			formulario.pais.value = '';
+			formulario.correo.value = '';
+		};
+		peticion.send(parametros);
+
+		peticion.onreadystatechange = function(){
+			if(peticion.readyState == 4 && peticion.status == 200){
+				loader.classList.remove('active');
+			}
+		}
+
 	}else{
 		error_box.classList.add('active');
 		error_box.innerHTML = 'Por favor complete el formulario correctamente';
 	}
 }
+
 // Click boton btn_cargar
 btn_cargar.addEventListener('click', function(){
 	cargarUsuarios();
 });
-
+// Click submit de formulario el evento
 formulario,addEventListener('submit', function(e){
 	agregarUsuarios(e);
 });
 
+///////////////////////////////////////////////
 function formulario_valido(){
 
 	if (usuario_nombre == ''){
